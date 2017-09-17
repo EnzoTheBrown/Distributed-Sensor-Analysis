@@ -20,7 +20,7 @@ For this experience, we use a cluster of 6 machines.
 
 We've been able do determine different kinds of attacks such as replay attacks on a video, DDos, Inpersonation attacks, ...
 
-We didn't add time to push the human detection further than only detecting people on the screen. 
+We didn't had time to push the human detection further than only detecting people on the screen. 
 but we have good ideas such as Markov chains in order to analyze the behavior of the entities.
 
 
