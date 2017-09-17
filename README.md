@@ -12,10 +12,6 @@
 
 
 
-
-The 
-
-
 ### Gear
 
 For this experience, we use a cluster of 6 machines.
