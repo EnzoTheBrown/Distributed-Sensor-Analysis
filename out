@@ -1,0 +1,57 @@
+Traceback (most recent call last):
+  File "/home/ubuntu/TER/test.py", line 84, in <module>
+    ssc.awaitTermination()  
+  File "/home/ubuntu/spark/python/lib/pyspark.zip/pyspark/streaming/context.py", line 206, in awaitTermination
+  File "/home/ubuntu/spark/python/lib/py4j-0.10.4-src.zip/py4j/java_gateway.py", line 1133, in __call__
+  File "/home/ubuntu/spark/python/lib/py4j-0.10.4-src.zip/py4j/protocol.py", line 319, in get_return_value
+py4j.protocol.Py4JJavaError: An error occurred while calling o23.awaitTermination.
+: org.apache.spark.SparkException: An exception was raised by Python:
+Traceback (most recent call last):
+  File "/home/ubuntu/spark/python/lib/pyspark.zip/pyspark/streaming/util.py", line 67, in call
+    return r._jrdd
+  File "/home/ubuntu/spark/python/lib/pyspark.zip/pyspark/rdd.py", line 2439, in _jrdd
+    self._jrdd_deserializer, profiler)
+  File "/home/ubuntu/spark/python/lib/pyspark.zip/pyspark/rdd.py", line 2372, in _wrap_function
+    pickled_command, broadcast_vars, env, includes = _prepare_for_python_RDD(sc, command)
+  File "/home/ubuntu/spark/python/lib/pyspark.zip/pyspark/rdd.py", line 2358, in _prepare_for_python_RDD
+    pickled_command = ser.dumps(command)
+  File "/home/ubuntu/spark/python/lib/pyspark.zip/pyspark/serializers.py", line 440, in dumps
+    return cloudpickle.dumps(obj, 2)
+  File "/home/ubuntu/spark/python/lib/pyspark.zip/pyspark/cloudpickle.py", line 667, in dumps
+    cp.dump(obj)
+  File "/home/ubuntu/spark/python/lib/pyspark.zip/pyspark/cloudpickle.py", line 111, in dump
+    raise pickle.PicklingError(msg)
+PicklingError: Could not pickle object as excessively deep recursion required.
+
+	at org.apache.spark.streaming.api.python.TransformFunction.callPythonTransformFunction(PythonDStream.scala:95)
+	at org.apache.spark.streaming.api.python.TransformFunction.apply(PythonDStream.scala:78)
+	at org.apache.spark.streaming.api.python.PythonTransformedDStream.compute(PythonDStream.scala:246)
+	at org.apache.spark.streaming.dstream.DStream$$anonfun$getOrCompute$1$$anonfun$1$$anonfun$apply$7.apply(DStream.scala:341)
+	at org.apache.spark.streaming.dstream.DStream$$anonfun$getOrCompute$1$$anonfun$1$$anonfun$apply$7.apply(DStream.scala:341)
+	at scala.util.DynamicVariable.withValue(DynamicVariable.scala:58)
+	at org.apache.spark.streaming.dstream.DStream$$anonfun$getOrCompute$1$$anonfun$1.apply(DStream.scala:340)
+	at org.apache.spark.streaming.dstream.DStream$$anonfun$getOrCompute$1$$anonfun$1.apply(DStream.scala:340)
+	at org.apache.spark.streaming.dstream.DStream.createRDDWithLocalProperties(DStream.scala:415)
+	at org.apache.spark.streaming.dstream.DStream$$anonfun$getOrCompute$1.apply(DStream.scala:335)
+	at org.apache.spark.streaming.dstream.DStream$$anonfun$getOrCompute$1.apply(DStream.scala:333)
+	at scala.Option.orElse(Option.scala:289)
+	at org.apache.spark.streaming.dstream.DStream.getOrCompute(DStream.scala:330)
+	at org.apache.spark.streaming.dstream.ForEachDStream.generateJob(ForEachDStream.scala:48)
+	at org.apache.spark.streaming.DStreamGraph$$anonfun$1.apply(DStreamGraph.scala:117)
+	at org.apache.spark.streaming.DStreamGraph$$anonfun$1.apply(DStreamGraph.scala:116)
+	at scala.collection.TraversableLike$$anonfun$flatMap$1.apply(TraversableLike.scala:241)
+	at scala.collection.TraversableLike$$anonfun$flatMap$1.apply(TraversableLike.scala:241)
+	at scala.collection.mutable.ResizableArray$class.foreach(ResizableArray.scala:59)
+	at scala.collection.mutable.ArrayBuffer.foreach(ArrayBuffer.scala:48)
+	at scala.collection.TraversableLike$class.flatMap(TraversableLike.scala:241)
+	at scala.collection.AbstractTraversable.flatMap(Traversable.scala:104)
+	at org.apache.spark.streaming.DStreamGraph.generateJobs(DStreamGraph.scala:116)
+	at org.apache.spark.streaming.scheduler.JobGenerator$$anonfun$3.apply(JobGenerator.scala:249)
+	at org.apache.spark.streaming.scheduler.JobGenerator$$anonfun$3.apply(JobGenerator.scala:247)
+	at scala.util.Try$.apply(Try.scala:192)
+	at org.apache.spark.streaming.scheduler.JobGenerator.generateJobs(JobGenerator.scala:247)
+	at org.apache.spark.streaming.scheduler.JobGenerator.org$apache$spark$streaming$scheduler$JobGenerator$$processEvent(JobGenerator.scala:183)
+	at org.apache.spark.streaming.scheduler.JobGenerator$$anon$1.onReceive(JobGenerator.scala:89)
+	at org.apache.spark.streaming.scheduler.JobGenerator$$anon$1.onReceive(JobGenerator.scala:88)
+	at org.apache.spark.util.EventLoop$$anon$1.run(EventLoop.scala:48)
+
